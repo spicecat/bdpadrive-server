@@ -1,13 +1,5 @@
-const jwt = require('jsonwebtoken'), User = require('../models/User')
+const superagent = require('superagent'), jwt = require('jsonwebtoken'), User = require('../models/User')
 
-const getUsers = async (req, res) => {
-    try {
-        const users = await User.find({}).lean()
-        res.send(users).status(201)
-    } catch (err) {
-        res.sendStatus(400)
-    }
-}
 const register = async (username, password) => {
     try {
         const user = new User({ username, password })
